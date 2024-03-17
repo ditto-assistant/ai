@@ -43,7 +43,7 @@
     "url": "https://github.com/ditto-assistant/ai/issues"
   },
   "keywords": [
-    "ditto-assistant-ai"
+    "ai"
   ],
   "packageManager": "pnpm@8.6.9",
   "prettier": {
