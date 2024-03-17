@@ -115,6 +115,25 @@ export interface Message {
    * Additional message-specific information added on the server via StreamData
    */
   annotations?: JSONValue[] | undefined;
+
+  /**
+   * The iteration ID of the message.
+   * Increment each time a user edits an existing message.
+   */
+  editId?: number;
+
+  /**
+   * The generation ID of the message.
+   * Increment when a user asks for a new completion.
+   */
+  genId?: number;
+
+  /**
+   * The row ID of the message.
+   * Set this after saving prompt to DB.
+   * This is not a unique number, as one row saves the prompt and response.
+   */
+  rowid?: number;
 }
 
 export type CreateMessage = Omit<Message, 'id'> & {
@@ -163,6 +182,11 @@ export type UseChatOptions = {
    * a stream of tokens of the AI chat response. Defaults to `/api/chat`.
    */
   api?: string;
+
+  /**
+   * The maximum number of messages to be sent to the API in a single request.
+   */
+  apiMessageCount?: number;
 
   /**
    * A unique identifier for the chat. If not provided, a random one will be
