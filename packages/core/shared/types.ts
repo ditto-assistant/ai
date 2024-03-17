@@ -133,7 +133,7 @@ export interface Message {
    * Set this after saving prompt to DB.
    * This is not a unique number, as one row saves the prompt and response.
    */
-  rowid?: number;
+  rowId?: number;
 }
 
 export type CreateMessage = Omit<Message, 'id'> & {
