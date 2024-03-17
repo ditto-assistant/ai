@@ -1,8 +1,14 @@
 {
-  "extends": "./node_modules/@vercel/ai-tsconfig/react-library.json",
+  "extends": "./node_modules/@ditto-assistant/ai-tsconfig/react-library.json",
   "compilerOptions": {
     "target": "ES2018"
   },
-  "include": ["."],
-  "exclude": ["dist", "build", "node_modules"]
+  "include": [
+    "."
+  ],
+  "exclude": [
+    "dist",
+    "build",
+    "node_modules"
+  ]
 }
