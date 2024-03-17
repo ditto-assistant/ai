@@ -1,5 +1,5 @@
 {
-  "name": "ai",
+  "name": "ditto-assistant-ai",
   "version": "3.0.12",
   "license": "Apache-2.0",
   "sideEffects": false,
@@ -105,7 +105,7 @@
     "@vitejs/plugin-vue": "4.5.0",
     "cohere-ai": "^7.6.2",
     "eslint": "^7.32.0",
-    "eslint-config-vercel-ai": "workspace:*",
+    "eslint-config-ditto-assistant-ai": "workspace:*",
     "jsdom": "^23.0.0",
     "langchain": "0.0.196",
     "msw": "2.0.9",
@@ -156,7 +156,7 @@
     "url": "https://github.com/ditto-assistant/ai/issues"
   },
   "keywords": [
-    "ai",
+    "ditto-assistant-ai",
     "nextjs",
     "svelte",
     "react",

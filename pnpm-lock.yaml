@@ -17,7 +17,7 @@ importers:
       eslint:
         specifier: ^7.32.0
         version: 7.32.0
-      eslint-config-vercel-ai:
+      eslint-config-ditto-assistant-ai:
         specifier: workspace:*
         version: link:tools/eslint-config
       husky:
@@ -1092,7 +1092,7 @@ importers:
       eslint:
         specifier: ^7.32.0
         version: 7.32.0
-      eslint-config-vercel-ai:
+      eslint-config-ditto-assistant-ai:
         specifier: workspace:*
         version: link:../../tools/eslint-config
       jsdom:
