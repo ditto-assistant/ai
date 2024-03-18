@@ -99,9 +99,9 @@ export async function callChatApi({
       createdAt,
       content: '',
       role: 'assistant',
-      rowId: messages[-1]?.rowId,
-      editId: messages[-1]?.editId,
-      genId: messages[-1]?.genId,
+      rowId: messages[messages.length - 1]?.rowId,
+      editId: messages[messages.length - 1]?.editId,
+      genId: messages[messages.length - 1]?.genId,
     };
 
     // TODO-STREAMDATA: Remove this once Stream Data is not experimental
