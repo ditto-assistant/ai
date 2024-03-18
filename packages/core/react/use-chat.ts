@@ -94,8 +94,9 @@ const getStreamedResponse = async (
 ) => {
   // Do an optimistic update to the chat state to show the updated messages
   // immediately.
-  const previousMessages = messagesRef.current;
-  mutate(chatRequest.messages, false);
+  const latestMessage = chatRequest.messages[chatRequest.messages.length - 1];
+  const previousMessages = messagesRef.current.concat(latestMessage);
+  mutate(previousMessages, false);
 
   const constructedMessagesPayload = sendExtraMessageFields
     ? chatRequest.messages
@@ -124,7 +125,6 @@ const getStreamedResponse = async (
       createdAt,
       content: '',
       role: 'assistant',
-
     };
 
     async function readRow(promise: Promise<ReactResponseRow>) {
@@ -134,7 +134,7 @@ const getStreamedResponse = async (
       responseMessage['content'] = content;
       responseMessage['ui'] = await ui;
 
-      mutate([...chatRequest.messages, { ...responseMessage }], false);
+      mutate([...previousMessages, { ...responseMessage }], false);
 
       if (next) {
         await readRow(next);
@@ -187,14 +187,14 @@ const getStreamedResponse = async (
     },
     abortController: () => abortControllerRef.current,
     appendMessage(message) {
-      mutate([...chatRequest.messages, message], false);
+      mutate([...previousMessages, message], false);
     },
     restoreMessagesOnFailure() {
       mutate(previousMessages, false);
     },
     onResponse,
     onUpdate(merged, data) {
-      mutate([...chatRequest.messages, ...merged], false);
+      mutate([...previousMessages, ...merged], false);
       mutateStreamData([...(existingData || []), ...(data || [])], false);
     },
     onFinish,
