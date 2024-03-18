@@ -203,6 +203,7 @@ const getStreamedResponse = async (
 
 export function useChat({
   api = '/api/chat',
+  apiMessageCount = 6,
   id,
   initialMessages,
   initialInput = '',
@@ -361,7 +362,9 @@ export function useChat({
       }
 
       const chatRequest: ChatRequest = {
-        messages: messagesRef.current.concat(message as Message),
+        messages: messagesRef.current
+          .concat(message as Message)
+          .slice(-apiMessageCount),
         options,
         data,
         ...(functions !== undefined && { functions }),

@@ -65,7 +65,6 @@ const store: Record<string, Message[] | undefined> = {};
 
 export function useChat({
   api = '/api/chat',
-  apiMessageCount = 5,
   id,
   initialMessages = [],
   initialInput = '',
@@ -139,17 +138,17 @@ export function useChat({
           return await callChatApi({
             api,
             messages: sendExtraMessageFields
-              ? chatRequest.messages.slice(-apiMessageCount)
-              : chatRequest.messages
-                  .slice(-apiMessageCount)
-                  .map(({ role, content, name, function_call }) => ({
+              ? chatRequest.messages
+              : chatRequest.messages.map(
+                  ({ role, content, name, function_call }) => ({
                     role,
                     content,
                     ...(name !== undefined && { name }),
                     ...(function_call !== undefined && {
                       function_call: function_call,
                     }),
-                  })),
+                  }),
+                ),
             body: {
               data: chatRequest.data,
               ...unref(body), // Use unref to unwrap the ref value
