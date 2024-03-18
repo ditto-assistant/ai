@@ -124,6 +124,7 @@ const getStreamedResponse = async (
       createdAt,
       content: '',
       role: 'assistant',
+
     };
 
     async function readRow(promise: Promise<ReactResponseRow>) {
